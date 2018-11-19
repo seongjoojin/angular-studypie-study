@@ -20,3 +20,14 @@ https://slides.com/woongjae/deck-8#/1/2
 tsc --init 명령어 - tsconfig.json 생성
 
 tsc -w 명령어 - watch 모드 -> 코드 변경시 컴파일
+
+## IDE 활용
+
+- VSCode는 타입스크립트 내장됨.
+- 내장된 컴파일러를 선택할수 있고, 직접 설치한 컴파일러를 선택할 수 있음
+
+npm i typescript tslint 
+
+VSC tslint 확장프로그램 있음.
+
+Your JavaScript is TypeScript (https://basarat.gitbooks.io/typescript/content/docs/javascript/recap.html)

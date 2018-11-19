@@ -5,3 +5,5 @@ class Test {
 }
 
 new Test()
+
+let myName = "mark"
