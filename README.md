@@ -121,20 +121,20 @@ _module_
 - Typescript 에서 프로그램 작성을 위해 기본 제공하는 데이터 타입
 - **사용자가 만든 타입은 결국은 이 기본 자료형들로 쪼개짐.**
 - Javascript 기본 자료형을 포함 (superset)
-    - ECMAScript 표준에 따른 기본 자료형은 6가지
-        - Boolean
-        - Number
-        - String
-        - Null
-        - Undefined
-        - Symbol (ES6에 추가)
-        - Array :  object 형
-    - 프로그래밍을 도울 몇가지 타입이 더 제공됨
-        - Any
-        - Void
-        - Never
-        - Enum
-        - Tuple : object 형
+  - ECMAScript 표준에 따른 기본 자료형은 6가지
+    - Boolean
+    - Number
+    - String
+    - Null
+    - Undefined
+    - Symbol (ES6에 추가)
+    - Array : object 형
+  - 프로그래밍을 도울 몇가지 타입이 더 제공됨
+    - Any
+    - Void
+    - Never
+    - Enum
+    - Tuple : object 형
 
 #### Primitive Type
 
@@ -142,9 +142,9 @@ _module_
 - 프리미티브 형의 내장 함수가 사용 가능한것은 자바스크립트 처리 방식 덕분
 
 ```typescript
-let name = 'mark';
+let name = "mark"
 
-name.toString();
+name.toString()
 ```
 
 #### literal ?
@@ -163,6 +163,7 @@ true    // boolean 리터럴
     age: 35
 }
 ```
+
 #### Boolean / boolean
 
 - 가장 기본적인 데이터 타입
@@ -183,7 +184,7 @@ true    // boolean 리터럴
 
 - 행에 걸쳐 있거나, 표현식을 넣을 수 있는 문자열
 - 이 문자열은 backtick(=backquote) 기호에 둘러쌓여 있음
-- 포함된 표현식은 '${expr}'와 같은 형태로 사용함
+- 포함된 표현식은 '\${expr}'와 같은 형태로 사용함
 
 #### undefined & null
 
@@ -196,8 +197,8 @@ true    // boolean 리터럴
 - 기본 설정이 그렇다
 - number 에 null 또는 undefined 를 할당할 수 있다는 의미임
 - 하지만, 컴파일 옵션에서 '--strictNullChecks' 사용하면, null 과 undefined 는 void 나 자기 자신들에게만 할당할 수 있음.
-    - 이 경우, null 과 undefined 를 할당할 수 있게 하려면, union type 을 이용해야 함.
-    
+  - 이 경우, null 과 undefined 를 할당할 수 있게 하려면, union type 을 이용해야 함.
+
 #### null in JavaScript
 
 - null 이라는 값으로 할당된 것을 null 이라고 함.
@@ -225,20 +226,19 @@ true    // boolean 리터럴
 - 이걸 최대한 쓰지 않는게 핵심임
 - 왜냐하면 컴파일 타임에 타입 체크가 정상적으로 이뤄지지 않기 때문임
 - 그래서 컴파일 옵션 중에는 any 를 쓰면 오류를 뱉도록 하는 옵션도 있음
-    - nolmplicitAny
-    
+  - nolmplicitAny
+
 #### Never
 
 - 리턴에 주로 사용됨
-
 
 #### Array
 
 - 원래 자바스크립트에서 array 는 객체임
 - 사용방법
-    - Array<타입>
-    - 타입[]
-    
+  - Array<타입>
+  - 타입[]
+
 #### Tuple
 
 - 배열인데 타입이 한가지가 아닌 경우
@@ -255,3 +255,67 @@ true    // boolean 리터럴
 - 프리미티브 타입의 값을 담아서 사용함.
 - 고유하고 수정불가능한 값으로 만들어줌
 - 그래서 주로 접근을 제어하는데 쓰는 경우가 많음.
+
+## var, let, const
+
+#### var VS let, const
+
+- var
+  - ES5
+  - 변수의 유효 범위 : 함수 스코프
+  - 호이스팅 (O)
+  - 재선정 가능
+- let, const
+
+  - ES6
+  - 변수의 유효 범위 : 블록 스코프 (친숙)
+  - 호이스팅 (X)
+  - 재선언 불가
+
+- var 말고 let, const
+
+#### Hoisting
+
+```typescript
+console.log(hoisted_var)
+
+var hoisted_var = "변수를 아래서 선언했는데 사용이 위에서 가능"
+```
+
+```typescript
+console.log(hoisted_let)
+
+let hoisted_let = "변수를 아래서 선언했는데 사용이 위에서 불가"
+```
+
+#### redeclare
+
+```typescript
+var redeclare_var: string = "한번 선언 했는데"
+var redeclare_var: string = "또 선언이 가능"
+// var redeclare_var : number = O; (X)
+
+// var 에서 재선언 하더라도 같은 타입이여야함
+```
+
+```typescript
+let redeclare_let = "한번 선언 했기 때문에"
+let redeclare_let = "또 선언이 불가"
+```
+
+#### let 과 const 의 타입 추론
+
+```typescript
+let a: string = "에이"
+let b = "비이"
+
+const c: string = "씨이"
+const d = "디이"
+
+/*
+ * 1. a 는 명시적으로 지정된 타입인 string
+ * 2. b 는 타입추론에 의한 타입인 string
+ * 3. c 는 명시적으로 지정된 타입인 string
+ * 4. d 는 타입추론에 의한 타입인 리터럴타입 "디이"
+ * */
+```
