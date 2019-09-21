@@ -1,5 +1,7 @@
 # angular-studypie-study
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/seongjoojin/angular-studypie-study.svg)](https://greenkeeper.io/)
+
 studypie에서 8주동안 진행되었던 angular study 내용을 정리한 곳입니다.
 
 ## 이웅재님 타입스크립트 발표자료
